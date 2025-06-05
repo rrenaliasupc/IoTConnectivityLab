@@ -1,0 +1,116 @@
+1748874946: mosquitto version 2.0.21 starting
+1748874946: Config loaded from /mosquitto/config/mosquitto.conf.
+1748874946: Opening ipv4 listen socket on port 1883.
+1748874946: Opening ipv6 listen socket on port 1883.
+1748874946: mosquitto version 2.0.21 running
+1748876747: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1748878548: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1748879238: New connection from 172.19.0.1:34220 on port 1883.
+1748879238: New connection from 172.19.0.1:34222 on port 1883.
+1748879238: Client <unknown> disconnected due to protocol error.
+1748879238: Client <unknown> disconnected due to protocol error.
+1748879238: New connection from 172.19.0.1:34244 on port 1883.
+1748879238: Client <unknown> disconnected due to protocol error.
+1748879240: New connection from 172.19.0.1:34260 on port 1883.
+1748879240: Client <unknown> disconnected due to protocol error.
+1748879240: New connection from 172.19.0.1:34266 on port 1883.
+1748879243: Client <unknown> disconnected due to protocol error.
+1748879243: New connection from 172.19.0.1:39040 on port 1883.
+1748879243: Client <unknown> disconnected due to protocol error.
+1748879243: New connection from 172.19.0.1:39054 on port 1883.
+1748879244: Client <unknown> disconnected due to protocol error.
+1748879244: New connection from 172.19.0.1:39058 on port 1883.
+1748879244: Client <unknown> disconnected due to protocol error.
+1748879244: New connection from 172.19.0.1:39060 on port 1883.
+1748879244: Client <unknown> disconnected due to protocol error.
+1748880349: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1748882150: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1748961276: mosquitto version 2.0.21 starting
+1748961276: Config loaded from /mosquitto/config/mosquitto.conf.
+1748961276: Opening ipv4 listen socket on port 1883.
+1748961276: Opening ipv6 listen socket on port 1883.
+1748961276: mosquitto version 2.0.21 running
+1748962236: New connection from 172.19.0.1:34272 on port 1883.
+1748962236: New client connected from 172.19.0.1:34272 as esp32-client (p2, c1, k15).
+1748962255: New connection from 172.19.0.1:40108 on port 1883.
+1748962255: Client esp32-client already connected, closing old connection.
+1748962255: New client connected from 172.19.0.1:40108 as esp32-client (p2, c1, k15).
+1748962314: mosquitto version 2.0.21 terminating
+1748962314: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1748962321: mosquitto version 2.0.21 starting
+1748962321: Config loaded from /mosquitto/config/mosquitto.conf.
+1748962321: Opening ipv4 listen socket on port 1883.
+1748962321: Opening ipv6 listen socket on port 1883.
+1748962321: mosquitto version 2.0.21 running
+1748962335: New connection from 172.19.0.1:43342 on port 1883.
+1748962335: New client connected from 172.19.0.1:43342 as esp32-client (p2, c1, k15).
+1748962419: Client esp32-client closed its connection.
+1748964122: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1748965873: New connection from 172.19.0.1:60056 on port 1883.
+1748965873: New client connected from 172.19.0.1:60056 as esp32-client (p2, c1, k15).
+1748965923: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1748965956: Client esp32-client has exceeded timeout, disconnecting.
+1748965997: mosquitto version 2.0.21 starting
+1748965997: Config loaded from /mosquitto/config/mosquitto.conf.
+1748965997: Opening ipv4 listen socket on port 1883.
+1748965997: Opening ipv6 listen socket on port 1883.
+1748965997: mosquitto version 2.0.21 running
+1748966002: New connection from 172.19.0.1:51832 on port 1883.
+1748966002: New client connected from 172.19.0.1:51832 as esp32-client (p2, c1, k15).
+1748966019: New connection from 172.19.0.1:41680 on port 1883.
+1748966019: Client esp32-client already connected, closing old connection.
+1748966019: New client connected from 172.19.0.1:41680 as esp32-client (p2, c1, k15).
+1748966267: Client esp32-client has exceeded timeout, disconnecting.
+1748966314: New connection from 172.19.0.1:49386 on port 1883.
+1748966314: New client connected from 172.19.0.1:49386 as esp32-client (p2, c1, k15).
+1748966337: Client esp32-client has exceeded timeout, disconnecting.
+1748966350: New connection from 172.19.0.1:54594 on port 1883.
+1748966350: New client connected from 172.19.0.1:54594 as esp32-client (p2, c1, k15).
+1748967087: New connection from 172.19.0.1:54736 on port 1883.
+1748967087: Client esp32-client already connected, closing old connection.
+1748967087: New client connected from 172.19.0.1:54736 as esp32-client (p2, c1, k15).
+1748967110: Client esp32-client has exceeded timeout, disconnecting.
+1748967132: New connection from 172.19.0.1:60866 on port 1883.
+1748967132: New client connected from 172.19.0.1:60866 as esp32-client (p2, c1, k15).
+1748967168: New connection from 172.19.0.1:38210 on port 1883.
+1748967168: Client esp32-client already connected, closing old connection.
+1748967168: New client connected from 172.19.0.1:38210 as esp32-client (p2, c1, k15).
+1748967221: Client esp32-client has exceeded timeout, disconnecting.
+1748967259: New connection from 172.19.0.1:33692 on port 1883.
+1748967259: New client connected from 172.19.0.1:33692 as esp32-client (p2, c1, k15).
+1748967313: Client esp32-client has exceeded timeout, disconnecting.
+1748967366: New connection from 172.19.0.1:49718 on port 1883.
+1748967366: New client connected from 172.19.0.1:49718 as esp32-client (p2, c1, k15).
+1748967450: Client esp32-client has exceeded timeout, disconnecting.
+1748967489: New connection from 172.19.0.1:33056 on port 1883.
+1748967489: New client connected from 172.19.0.1:33056 as esp32-client (p2, c1, k15).
+1748967611: New connection from 172.19.0.1:44972 on port 1883.
+1748967611: Client esp32-client already connected, closing old connection.
+1748967611: New client connected from 172.19.0.1:44972 as esp32-client (p2, c1, k15).
+1748967654: Client esp32-client has exceeded timeout, disconnecting.
+1748967798: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1748967947: New connection from 172.19.0.1:38732 on port 1883.
+1748967947: New client connected from 172.19.0.1:38732 as esp32-client (p2, c1, k15).
+1748967995: Client esp32-client has exceeded timeout, disconnecting.
+1748968030: New connection from 172.19.0.1:38906 on port 1883.
+1748968030: New client connected from 172.19.0.1:38906 as esp32-client (p2, c1, k15).
+1748968183: Client esp32-client has exceeded timeout, disconnecting.
+1748968218: New connection from 172.19.0.1:58174 on port 1883.
+1748968218: New client connected from 172.19.0.1:58174 as esp32-client (p2, c1, k15).
+1748968282: mosquitto version 2.0.21 terminating
+1748968282: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1748968283: mosquitto version 2.0.21 starting
+1748968283: Config loaded from /mosquitto/config/mosquitto.conf.
+1748968283: Opening ipv4 listen socket on port 1883.
+1748968283: Opening ipv6 listen socket on port 1883.
+1748968283: mosquitto version 2.0.21 running
+1748968302: New connection from 172.19.0.1:52582 on port 1883.
+1748968302: New client connected from 172.19.0.1:52582 as esp32-client (p2, c1, k15).
+1748968780: New connection from 172.19.0.1:55954 on port 1883.
+1748968780: New client connected from 172.19.0.1:55954 as auto-B0D79B3A-E058-44B2-B96B-5C6AC9AEA451 (p2, c1, k60).
+1748970084: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1748970361: Client esp32-client has exceeded timeout, disconnecting.
+1748971373: Client auto-B0D79B3A-E058-44B2-B96B-5C6AC9AEA451 closed its connection.
+1748971885: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1748973686: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1748975487: Saving in-memory database to /mosquitto/data//mosquitto.db.

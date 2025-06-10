@@ -4,7 +4,7 @@
 #include <LoRa.h>
 #include <ArduinoJson.h>
 
-#define LORA_SENDING
+
 
 
 // Put the credentials of the wifi used here
@@ -34,12 +34,14 @@ const long interval = 1000; // 1 seconds in milliseconds
 #define LORA_RST  14
 #define LORA_DIO0 26
 
+#define PIN_LED   25
 
 void setup() {
   Serial.begin(115200);  // Millor velocitat per ESP32
 
+  pinMode(PIN_LED, OUTPUT);  // Configura el pin 25 com a sortida
+  digitalWrite(PIN_LED, LOW); // Apaga el LED inicialment (opcional)
 
-#ifdef WIFI_Sender
   Serial.println();
   Serial.println("Connecting to the WiFi...");
 
@@ -67,16 +69,21 @@ void setup() {
   Serial.println(" dBm");
 
   client.setServer(mqtt_server, mqtt_port);
-#endif //WIFI_Sender
 
-#ifdef LORA_SENDING
   // Configura SPI amb els pins personalitzats
   SPI.begin(LORA_SCK, LORA_MISO, LORA_MOSI, LORA_SS);
 
   LoRa.setPins(LORA_SS, LORA_RST, LORA_DIO0);
 
   connect_lora();
-#endif //LORA_SENDING
+
+  LoRa.setSignalBandwidth(125000); // BW de 500 kHz
+}
+
+void toggleLED() {
+  // Llegeix l'estat actual i posa el contrari
+  int state = digitalRead(PIN_LED);
+  digitalWrite(PIN_LED, !state);
 }
 
 void reconnect() {
@@ -108,79 +115,73 @@ void connect_lora() {
   Serial.println("connect_lora - end");
 }
 
-void MesureAndSendTemperatureAndHumidity()
+void ReadLORAAndSendTemperatureAndHumidity()
 {
   int temperature = 0;
   int humidity = 0;
-  char value_string[100];
+  static char jsonBuffer[200];  // buffer per guardar el JSON rebut
+  int index = 0;
   
   //Do the measure every interval (5s)
   unsigned long currentMillis = millis();
-  if (currentMillis - previousMillis >= interval) {
-    previousMillis = currentMillis;
 
+  // try to parse packet
+  int packetSize = LoRa.parsePacket();
+  if (packetSize) {
+    // received a packet
+    Serial.print("Received packet '");
+    toggleLED();
 
-    // Attempt to read the temperature and humidity values from the DHT11 sensor.
-    int result = dht11.readTemperatureHumidity(temperature, humidity);
-
-    // Check the results of the readings.
-    // If the reading is successful, print the temperature and humidity values.
-    // If there are errors, print the appropriate error messages.
-    if (result == 0) {
-        Serial.print("Temperature: ");
-        Serial.print(temperature);
-        Serial.print(" °C\tHumidity: ");
-        Serial.print(humidity);
-        Serial.println(" %");
-#ifdef WIFI_SENDING
-        client.publish("test/temperature", String(temperature).c_str());
-        client.publish("test/humidity", String(humidity).c_str());
-#endif //WIFI_SENDING
-#ifdef LORA_SENDING
-        //Empaquetem utilitzant JSON
-        // Crear objecte JSON
-        StaticJsonDocument<128> doc;
-        doc["ownAdr"] = 1000;
-        doc["destAdr"] = 2000;
-        doc["temperature"] = temperature;
-        doc["humidity"] = humidity;
-
-        // Serialitza a una cadena JSON
-        char buffer[128];
-        size_t n = serializeJson(doc, buffer);
-
-        // Enviar per LoRa
-        LoRa.beginPacket();
-        LoRa.write((uint8_t*)buffer, n);
-        LoRa.endPacket();
-
-        Serial.print("JSON enviat: ");
-        Serial.println(buffer);
-
-#endif //LORA_SENDING
-    } else {
-        // Print error message based on the error code.
-        Serial.println(DHT11::getErrorString(result));
+    // llegim el missatge i el guardem al buffer
+    while (LoRa.available() && index < sizeof(jsonBuffer) - 1) {
+      char c = (char)LoRa.read();
+      Serial.print(c);
+      jsonBuffer[index++] = c;
     }
+    jsonBuffer[index] = '\0';  // tancar la cadena
+    Serial.println("");
+
+    StaticJsonDocument<128> doc;
+
+    DeserializationError error = deserializeJson(doc, jsonBuffer);
+    if (error) {
+      Serial.print("Error de deserialització: ");
+      Serial.println(error.c_str());
+      return;
+    }
+
+    // Extreure valors
+    int ownAdr = doc["ownAdr"];
+    int destAdr = doc["destAdr"];
+    float temperature = doc["temperature"];
+    float humidity = doc["humidity"];
+
+    if(destAdr!=2000)
+    {
+      Serial.println("Packet is not for me");
+      return;
+    }
+
+    Serial.print("Temperature: ");
+    Serial.print(temperature);
+    Serial.print(" °C\tHumidity: ");
+    Serial.println(humidity);
+
+    client.publish("test/temperature", String(temperature).c_str());
+    client.publish("test/humidity", String(humidity).c_str());
+
   }
+
 }
 
 
-#ifdef WIFI_Sender
 void loop() {  
   if (!client.connected()) {
     reconnect();
   }
-  else
+    else
   {
-    MesureAndSendTemperatureAndHumidity();
+    ReadLORAAndSendTemperatureAndHumidity();
   }
   client.loop();
 }
-#endif //WIFI_Sender
-
-#ifdef LORA_SENDING
-void loop() {  
-  MesureAndSendTemperatureAndHumidity();
-}
-#endif //LORA_SENDING

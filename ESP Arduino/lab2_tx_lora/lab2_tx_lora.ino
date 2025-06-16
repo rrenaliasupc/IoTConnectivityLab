@@ -35,7 +35,7 @@ void setup() {
 
   connect_lora();
 
-  LoRa.setSignalBandwidth(125000); // BW de 500 kHz
+  LoRa.setSignalBandwidth(125000); // BW de 125 kHz
 }
 
 void toggleLED() {
